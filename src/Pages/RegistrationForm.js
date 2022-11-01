@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import CSButton from "../Components/CSButton";
+import CSDashboard from "../Components/CSDashboard";
 import CSDropDown from "../Components/CSDropDown";
 import CSTextField from "../Components/CSTextField";
 import { sendData } from "../Config/firebasemethods";
@@ -39,7 +40,9 @@ function RegistrationForm() {
 
   // },[])
   return (
-    <div className="header box">
+    <CSDashboard
+    workarea={
+ <div className="header box">
       <Box sx={{ width: "50%", pt: 2 }}>
         <Box sx={{ border: "2px solid white", borderRadius: "25px", p: 3 }}>
           <Typography color="inherit" variant="h4">
@@ -191,6 +194,9 @@ function RegistrationForm() {
         </Box>
       </Box>
     </div>
+    }
+    />
+   
   );
 }
 
