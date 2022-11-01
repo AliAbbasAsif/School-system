@@ -17,7 +17,7 @@ function AppRouter() {
           <Route path="/registrationform" element={<RegistrationForm />} />
           <Route path="/" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/admin/*" element={<Admin/>}/>
+          <Route path="/admin" element={<Admin/>}/>
           <Route path='/adminquiz' element={<AdminQuiz/>}/>
           <Route path="/quiz" element={<QuizApp/>}/>
         </Routes>
