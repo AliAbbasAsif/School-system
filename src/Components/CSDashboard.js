@@ -19,7 +19,6 @@ import ListItemText from "@mui/material/ListItemText";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ForumIcon from "@mui/icons-material/Forum";
 import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import HomeIcon from "@mui/icons-material/Home";
