@@ -8,6 +8,7 @@ import CSDashboard from "../Components/CSDashboard";
 import CSDropDown from "../Components/CSDropDown";
 import CSTextField from "../Components/CSTextField";
 import { sendData } from "../Config/firebasemethods";
+import Navbar from '../Components/Navbar'
 function RegistrationForm() {
   const [model, setmodel] = useState({});
   let fillmodel = (key, val) => {
@@ -24,7 +25,7 @@ function RegistrationForm() {
 
     fillmodel("age", diff);
     fillmodel("registrationyear", date.getFullYear());
-    fillmodel("registrationdate", date);
+    fillmodel("registrationdate", date.getDate()+ "-" +date.getMonth());
     fillmodel("isapprove", true);
     fillmodel("feessubmitted", true);
 
@@ -40,9 +41,10 @@ function RegistrationForm() {
 
   // },[])
   return (
-    <CSDashboard
-    workarea={
- <div className="header box">
+    <Box>
+
+      <Navbar/>
+    <div className="header box">
       <Box sx={{ width: "50%", pt: 2 }}>
         <Box sx={{ border: "2px solid white", borderRadius: "25px", p: 3 }}>
           <Typography color="inherit" variant="h4">
@@ -59,9 +61,16 @@ function RegistrationForm() {
             </Grid>
             <Grid item md={6}>
               <CSTextField
-                label="Email"
+                label="LastName"
                 value={model.lastname}
                 onChange={(e) => fillmodel("lastname", e.target.value)}
+              />
+            </Grid>
+            <Grid item md={12}>
+              <CSTextField
+                label="Email"
+                value={model.email}
+                onChange={(e) => fillmodel("email", e.target.value)}
               />
             </Grid>
             <Grid item md={12}>
@@ -194,9 +203,7 @@ function RegistrationForm() {
         </Box>
       </Box>
     </div>
-    }
-    />
-   
+    </Box>
   );
 }
 

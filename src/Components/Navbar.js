@@ -4,7 +4,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import '../App.css'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
-const pages = ['Products', 'Pricing', 'Blog'];
 // const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function Navbar(props) {
     let navigate = useNavigate();
@@ -78,9 +77,12 @@ function Navbar(props) {
                                     display: { xs: 'block', md: 'none' },
                                 }}
                             >
-                                {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu} >
-                                        <Typography textAlign="center">{page}</Typography>
+                                {[{ route: '/', name: 'RegistrationForm' },
+                                { route: '/course', name: 'Courses' },
+                                { route: '/result', name: 'Results' },
+                                { route: '/trainer', name: 'Trainer' }].map((page,index) => (
+                                    <MenuItem key={index} onClick={() => navigate(page.route)} >
+                                        <Typography textAlign="center">{page.name}</Typography>
                                     </MenuItem>
                                 ))}
                             </Menu>
@@ -104,13 +106,16 @@ function Navbar(props) {
                             LOGO
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                            {pages.map((page) => (
+                            {[{ route: '/', name: 'RegistrationForm' },
+                             { route: '/course', name: 'Courses' },
+                                { route: '/result', name: 'Results' },
+                                { route: '/trainer', name: 'Trainer' },].map((page,index) => (
                                 <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
+                                    key={index}
+                                    onClick={() => navigate(page.route)}
                                     sx={{ my: 2, color: 'white', display: 'block' }}
                                 >
-                                    {page}
+                                    {page.name}
                                 </Button>
                             ))}
                         </Box>

@@ -1,6 +1,6 @@
 import React from "react";
 import { styled, useTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -19,10 +19,15 @@ import ListItemText from "@mui/material/ListItemText";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import ForumIcon from "@mui/icons-material/Forum";
-import MapsUgcIcon from "@mui/icons-material/MapsUgc";
 import HomeIcon from "@mui/icons-material/Home";
-import HowToRegIcon from '@mui/icons-material/HowToReg';
+import AddCourse from "../Pages/AdminControls/AddCourse";
+import AdminQuiz from "../Pages/AdminControls/AdminQuiz";
+import Students from "../Pages/AdminControls/Students";
+import PersonIcon from '@mui/icons-material/Person';
+import QuizIcon from '@mui/icons-material/Quiz';
+import DescriptionIcon from '@mui/icons-material/Description';
+import AdminResult from "../Pages/AdminControls/AdminResult";
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 const drawerWidth = 240;
 
@@ -94,8 +99,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-function CSDashboard(props) {
-  const { workarea ,heading } = props;
+function CSDashboard() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [auth, setAuth] = React.useState(true);
@@ -146,7 +150,7 @@ function CSDashboard(props) {
               <MenuIcon fontSize="large" />
             </IconButton>
             <Typography variant="h4" noWrap component="div">
-          {heading}
+             DashBoard
             </Typography>
             <Box>
               {auth && (
@@ -216,7 +220,7 @@ function CSDashboard(props) {
               <ListItem
                 className="sideBtns"
                 onClick={() => {
-                  navigate("/registrationform");
+                  navigate("students");
                 }}
                 disablePadding
                 sx={{ display: "block" }}
@@ -235,17 +239,17 @@ function CSDashboard(props) {
                       justifyContent: "center",
                     }}
                   >
-                    <HowToRegIcon color="primary" />
+                    <PersonIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Registration"
+                    primary="Students"
                     sx={{ opacity: open ? 1 : 0 }}
                   />
                 </ListItemButton>
               </ListItem>
               <ListItem
                 onClick={() => {
-                  navigate("message");
+                  navigate("adminquiz");
                 }}
                 disablePadding
                 className="sideBtns"
@@ -265,17 +269,17 @@ function CSDashboard(props) {
                       justifyContent: "center",
                     }}
                   >
-                    <ForumIcon color="primary" />
+                    <QuizIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Messages"
+                    primary="AddQuiz"
                     sx={{ opacity: open ? 1 : 0 }}
                   />
                 </ListItemButton>
               </ListItem>
               <ListItem
                 onClick={() => {
-                  navigate("feedback");
+                  navigate("addcourse");
                 }}
                 disablePadding
                 className="sideBtns"
@@ -295,10 +299,40 @@ function CSDashboard(props) {
                       justifyContent: "center",
                     }}
                   >
-                    <MapsUgcIcon color="primary" />
+                    <DescriptionIcon color="primary" />
                   </ListItemIcon>
                   <ListItemText
-                    primary="Feedback"
+                    primary="ADDCourses"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+              <ListItem
+                className="sideBtns"
+                onClick={() => {
+                  navigate("adminresult");
+                }}
+                disablePadding
+                sx={{ display: "block" }}
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <AssignmentIcon color="primary" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="AdminResults"
                     sx={{ opacity: open ? 1 : 0 }}
                   />
                 </ListItemButton>
@@ -339,10 +373,15 @@ function CSDashboard(props) {
           sx={{
             flexGrow: 1,
             pt: 9,
-
           }}
         >
-          {workarea}
+          
+          <Routes>
+          <Route path="addcourse" element={<AddCourse />} />
+          <Route path="students" element={<Students />} />
+          <Route path="adminquiz" element={<AdminQuiz />} />
+          <Route path="adminresult" element={<AdminResult />} />
+          </Routes>
         </Box>
       </Box>
     </div>

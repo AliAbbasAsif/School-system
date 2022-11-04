@@ -17,8 +17,8 @@ export default function CSDropDown(props) {
         label={label}
         required={required}
         onChange={onChange}
-        InputLabelProps={{ className: "textFieldlabel" }}
-        inputProps={{ className: "textFieldlabel" }}
+        // InputLabelProps={{ className: "textFieldlabel" }}
+        // inputProps={{ className: "textFieldlabel" }}
       >
         { datasource && datasource.length > 0
           ? datasource.map((x) => (<MenuItem value={x.id}>{x.displayname}</MenuItem>))
