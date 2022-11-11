@@ -1,14 +1,17 @@
+:root {
+  --Dark: #222;
+}
+
 .header {
-  position:relative;
-  text-align:center;
-  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
-  color:white;
+  position: relative;
+  text-align: center;
   min-height: 100vh;
 }
-.bg{
-  background-color: #222;
+
+.bg {
   height: 100vh;
 }
+
 /* ::-webkit-scrollbar {
   width: 6px;
 }
@@ -17,24 +20,19 @@
   background: linear-gradient(rgb(0, 225, 255), rgb(255, 2, 141));
   border-radius: 4px;
 } */
-.box{
+.box {
   justify-content: center;
   display: flex;
 }
-.textFieldlabel{
-color: aliceblue !important;
-}
-.adminbg{
-  position:relative;
-  text-align:center;
-background-color: #222;
-  color:white;
+
+.adminbg {
+  position: relative;
+  text-align: center;
   min-height: 100vh;
 }
-.quizbg{
-  background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
-  position:relative;
-  text-align:center;
-  color:white;
+
+.quizbg {
+  position: relative;
+  text-align: center;
   min-height: 100vh;
 }

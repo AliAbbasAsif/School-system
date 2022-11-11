@@ -5,6 +5,7 @@ import "../../App.css";
 import CSDropDown from "../../Components/CSDropDown";
 import CSSwitch from "../../Components/CSSwitch";
 import CSButton from "../../Components/CSButton";
+import { sendData } from "../../Config/firebasemethods";
 
 function AdminResult() {
   const [model, setModel] = useState({});
@@ -17,39 +18,39 @@ function AdminResult() {
       result: "Pass",
     },
     {
-      name: "Abbas",
-      marks: 75,
-      rollno: 135,
+      name: "ALi",
+      marks: 35,
+      rollno: 136,
+      result: "fail",
+    },
+    {
+      name: "Sohail",
+      marks: 85,
+      rollno: 137,
       result: "Pass",
     },
     {
-      name: "Abbas",
-      marks: 75,
-      rollno: 135,
+      name: "Abuzar",
+      marks: 80,
+      rollno: 138,
       result: "Pass",
     },
     {
-      name: "Abbas",
-      marks: 75,
-      rollno: 135,
+      name: "Akram",
+      marks: 40,
+      rollno: 139,
+      result: "Fail",
+    },
+    {
+      name: "Kamran",
+      marks: 65,
+      rollno: 140,
       result: "Pass",
     },
     {
-      name: "Abbas",
+      name: "Rafay",
       marks: 75,
-      rollno: 135,
-      result: "Pass",
-    },
-    {
-      name: "Abbas",
-      marks: 75,
-      rollno: 135,
-      result: "Pass",
-    },
-    {
-      name: "Abbas",
-      marks: 75,
-      rollno: 135,
+      rollno: 141,
       result: "Pass",
     },
   ]);
@@ -57,6 +58,13 @@ function AdminResult() {
     model.isShowResult = coursestatus;
     model.result = resultData;
     console.log(model);
+    sendData(model, "Results/")
+      .then((success) => {
+        console.log(success);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="">

@@ -3,7 +3,7 @@ import React from "react";
 import "../App.css";
 
 function CSTextField(props) {
-  const { label, onChange, value, type, disable, required, helpertext } = props;
+  const { label, onChange, value, type, disable, required, helpertext,disabled } = props;
   return (
     <TextField
       disabled={disable}
@@ -14,8 +14,9 @@ function CSTextField(props) {
       required={required}
       fullWidth={true}
       helperText={helpertext}
-      InputLabelProps={{ className: "textFieldlabel" }}
-      inputProps={{ className: "textFieldlabel" }}
+      
+      // InputLabelProps={{ className: "textFieldlabel" }}
+      // inputProps={{ className: "textFieldlabel" }}
     />
   );
 }

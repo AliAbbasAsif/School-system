@@ -28,6 +28,12 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import DescriptionIcon from '@mui/icons-material/Description';
 import AdminResult from "../Pages/AdminControls/AdminResult";
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import AdminTrainer from "../Pages/AdminControls/AdminTrainer";
+import FlagIcon from '@mui/icons-material/Flag';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import Country from "../Pages/AdminControls/Country";
+import City from "../Pages/AdminControls/City";
 
 const drawerWidth = 240;
 
@@ -130,7 +136,7 @@ function CSDashboard() {
         {/* <CssBaseline /> */}
         <AppBar
           sx={{
-            backgroundColor: "#003B5F",
+            backgroundColor: "#222",
             padding: "5px",
           }}
           position="fixed"
@@ -155,7 +161,7 @@ function CSDashboard() {
             <Box>
               {auth && (
                 <div>
-                  <IconButton
+                  <IconButton 
                     size="large"
                     aria-label="account of current user"
                     aria-controls="menu-appbar"
@@ -163,7 +169,7 @@ function CSDashboard() {
                     onClick={handleMenu}
                     color="inherit"
                   >
-                    <AccountCircle fontSize="large" />
+                    <AccountCircle fontSize="large"  sx={{display:'flex',justifyContent:'end'}} />
                   </IconButton>
                   <Menu
                     id="menu-appbar"
@@ -337,6 +343,96 @@ function CSDashboard() {
                   />
                 </ListItemButton>
               </ListItem>
+              <ListItem
+                className="sideBtns"
+                onClick={() => {
+                  navigate("admintrainer");
+                }}
+                disablePadding
+                sx={{ display: "block" }}
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <AccountBoxIcon color="primary" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="AdminTrainers"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+              <ListItem
+                className="sideBtns"
+                onClick={() => {
+                  navigate("country");
+                }}
+                disablePadding
+                sx={{ display: "block" }}
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <FlagIcon color="primary" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Countries"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
+              <ListItem
+                className="sideBtns"
+                onClick={() => {
+                  navigate("city");
+                }}
+                disablePadding
+                sx={{ display: "block" }}
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <ApartmentIcon color="primary" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Cities"
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </ListItem>
               <Divider sx={{ backgroundColor: "#0277bd" }} />
               <ListItem
                 onClick={() => {
@@ -378,9 +474,12 @@ function CSDashboard() {
           
           <Routes>
           <Route path="addcourse" element={<AddCourse />} />
+          <Route path="admintrainer" element={<AdminTrainer />} />
           <Route path="students" element={<Students />} />
           <Route path="adminquiz" element={<AdminQuiz />} />
           <Route path="adminresult" element={<AdminResult />} />
+          <Route path="country" element={<Country />} />
+          <Route path="city" element={<City />} />
           </Routes>
         </Box>
       </Box>

@@ -44,9 +44,9 @@ function RegistrationForm() {
     <Box>
 
       <Navbar/>
-    <div className="header box">
-      <Box sx={{ width: "50%", pt: 2 }}>
-        <Box sx={{ border: "2px solid white", borderRadius: "25px", p: 3 }}>
+    <div className="header box" style={{height:'75vh'}}>
+      <Box sx={{ width: "75%", pt: 2 }}>
+        <Box sx={{ border: "2px solid #222", borderRadius: "25px", p: 3 }}>
           <Typography color="inherit" variant="h4">
             Registration Form
           </Typography>
@@ -74,37 +74,15 @@ function RegistrationForm() {
               />
             </Grid>
             <Grid item md={12}>
-              <CSDropDown
+            <CSDropDown
+               nodename="Courses"
+               displayField="coursename"
+               valueField="coursename"
                 label="Course"
                 required={true}
+                // disabled={isCreateQuiz}
                 value={model.course}
                 onChange={(e) => fillmodel("course", e.target.value)}
-                datasource={[
-                  {
-                    id: "Web And Mobile Application",
-                    displayname: "Web And Mobile Application",
-                  },
-                  {
-                    id: "Graphics Designing",
-                    displayname: "Graphics Designing",
-                  },
-                  {
-                    id: "Freelancing",
-                    displayname: "Freelancing",
-                  },
-                  {
-                    id: "Hacking",
-                    displayname: "Hacking",
-                  },
-                  {
-                    id: "Flutter",
-                    displayname: "Flutter",
-                  },
-                  {
-                    id: "Python",
-                    displayname: "Python",
-                  },
-                ]}
               />
             </Grid>
 

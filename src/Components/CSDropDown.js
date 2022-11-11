@@ -1,10 +1,39 @@
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import '../App.css'
+import { useEffect, useState } from "react";
+import "../App.css";
+import { getData } from "../Config/firebasemethods";
 
 export default function CSDropDown(props) {
-  const { label, value, onChange, datasource, required } = props;
+  const {
+    label,
+    value,
+    onChange,
+    datasource,
+    required,
+    disabled,
+    displayField,
+    valueField,
+    nodename,
+  } = props;
+
+  let [datasrc, setDatasrc] = useState(datasource);
+  let getDatasrc = () => {
+    if (nodename) {
+      getData(nodename)
+        .then((res) => {
+          setDatasrc(res);
+          console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+  useEffect(() => {
+    getDatasrc();
+  }, []);
   return (
     <>
       <InputLabel id="demo-simple-select-label">{label}</InputLabel>
@@ -17,11 +46,17 @@ export default function CSDropDown(props) {
         label={label}
         required={required}
         onChange={onChange}
+        disabled={disabled}
+
         // InputLabelProps={{ className: "textFieldlabel" }}
         // inputProps={{ className: "textFieldlabel" }}
       >
-        { datasource && datasource.length > 0
-          ? datasource.map((x) => (<MenuItem value={x.id}>{x.displayname}</MenuItem>))
+        {datasrc && datasrc.length > 0
+          ? datasrc.map((x) => (
+              <MenuItem value={x[valueField ? valueField : "id"]}>
+                {x[displayField ? displayField : "displayname"]}
+              </MenuItem>
+            ))
           : null}
       </Select>
     </>

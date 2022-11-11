@@ -1,17 +1,19 @@
-import { CircularProgress, Typography } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CircularProgress,
+  Grid,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
-import CSDataGrid from "../../Components/CSDataGrid";
-import { checkUser, getData } from "../../Config/firebasemethods";
+import { getData } from "../../Config/firebasemethods";
 import "../../App.css";
-import { setUserId } from "firebase/analytics";
-import { useNavigate, useParams } from "react-router-dom";
+import CSDataGrid from "../../Components/CSDataGrid";
 
-function Students() {
+function AdminTrainer() {
   const [data, setData] = useState([]);
-  // const [fullpageloader, setfullpageloader] = useState(false);
-  const params = useParams();
-  const navigate = useNavigate();
+  const [fullpageloader, setfullpageloader] = useState(false);
   const columns = [
     {
       field: "id",
@@ -34,74 +36,67 @@ function Students() {
       editable: true,
     },
     {
-      field: "age",
-      headerName: "AGE",
+      field: "contactnumber",
+      headerName: "Contact",
       width: 110,
       type: "number",
       heeaderClassName: "tabel-header",
       editable: true,
     },
     {
-      field: "contactnumber",
-      headerName: "ContactNumber",
-      width: 130,
+      field: "course",
+      headerName: "Course",
+      width: 140,
       type: "number",
       heeaderClassName: "tabel-header",
       editable: true,
     },
     {
-      field: "email",
-      headerName: "Email",
+      field: "qualification",
+      headerName: "Qualification",
+      width: 140,
+      heeaderClassName: "tabel-header",
+      editable: true,
+    },
+    {
+      field: "otherqualification",
+      headerName: "OtherQualification",
       width: 180,
       heeaderClassName: "tabel-header",
       editable: true,
     },
     {
-      field: "registrationyear",
-      headerName: "Registration Year",
-      width: 180,
+      field: "cnicnumber",
+      headerName: "Cnic Number",
+      width: 160,
       heeaderClassName: "tabel-header",
       editable: true,
     },
   ];
   useEffect(() => {
-    // setfullpageloader(true);
-    getData("Forms")
+    setfullpageloader(true);
+    getData("Trainer Forms")
       .then((res) => {
         console.log(res);
+        setfullpageloader(false);
         setData(res);
       })
       .catch((err) => {
+        setfullpageloader(false);
         console.log(err);
       });
-
-    // checkUser()
-    //   .then((res) => {
-    //     console.log(res);
-    //     if (params.id == res) {
-    //       setfullpageloader(false);
-    //       setUserId(res);
-    //     } else {
-    //       setfullpageloader(false);
-    //       navigate("/");
-    //     }
-    //   })
-      // .catch((err) => {
-      //   console.log(err);
-      // });
   }, []);
-  return (
-  // fullpageloader ? (
-  //   <>
-  //     <CircularProgress sx={{width:'70%'}}/>
-  //     <h1>Checking admin Verification Thank you for your patience ....</h1>
-  //   </>
-  // ) : (
+  return fullpageloader ? (
+    <Box sx={{ ml: 50 }}>
+      <CircularProgress sx={{ width: "70%" }} size="250px" />
+      <h1>Getting Data Thank you for your patience ....</h1>
+    </Box>
+  ) : (
     <div className="box">
-      <Box sx={{ p: 3, width: "87vw" }}>
+      <Box sx={{ p: 3, width: "80vw" }}>
         <Box sx={{ py: 6 }}>
           <Typography variant="h3" sx={{ py: 2 }} align="center">
-            Students Login
+            Trainers
           </Typography>
           {data && data.length > 0 ? (
             <CSDataGrid rows={data} columns={columns} />
@@ -123,4 +118,4 @@ function Students() {
   );
 }
 
-export default Students;
+export default AdminTrainer;

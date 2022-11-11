@@ -5,16 +5,16 @@ import { DataGrid } from "@mui/x-data-grid";
 function CSDataGrid(props) {
   const { rows, columns } = props;
   return (
-    <Box sx={{ height: 400, width:'100%' , pt:2}}>
+    <Box sx={{ height: 423, width:'100%'}}>
       <DataGrid
         onSelectionModelChange={(e) => {
           console.log(e);
         }}
         rows={rows}
         columns={columns}
-        pagination
-        pageSize={8}
-        rowsPerPageOptions={[5, 10]}
+        // pagination
+        pageSize={6}
+        // rowsPerPageOptions={[5, 10]}
         checkboxSelection
         disableSelectiononOnClick
         experimentalFeatures={{ newEditingApi: true }}
