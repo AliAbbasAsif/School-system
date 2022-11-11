@@ -245,7 +245,7 @@ function CSDashboard() {
                       justifyContent: "center",
                     }}
                   >
-                    <PersonIcon color="primary" />
+                    <PersonIcon color="inherit" />
                   </ListItemIcon>
                   <ListItemText
                     primary="Students"
@@ -275,7 +275,7 @@ function CSDashboard() {
                       justifyContent: "center",
                     }}
                   >
-                    <QuizIcon color="primary" />
+                    <QuizIcon color="inherit" />
                   </ListItemIcon>
                   <ListItemText
                     primary="AddQuiz"
@@ -305,7 +305,7 @@ function CSDashboard() {
                       justifyContent: "center",
                     }}
                   >
-                    <DescriptionIcon color="primary" />
+                    <DescriptionIcon color="inherit" />
                   </ListItemIcon>
                   <ListItemText
                     primary="ADDCourses"
@@ -335,7 +335,7 @@ function CSDashboard() {
                       justifyContent: "center",
                     }}
                   >
-                    <AssignmentIcon color="primary" />
+                    <AssignmentIcon color="inherit" />
                   </ListItemIcon>
                   <ListItemText
                     primary="AdminResults"
@@ -365,7 +365,7 @@ function CSDashboard() {
                       justifyContent: "center",
                     }}
                   >
-                    <AccountBoxIcon color="primary" />
+                    <AccountBoxIcon color="inherit" />
                   </ListItemIcon>
                   <ListItemText
                     primary="AdminTrainers"
@@ -395,7 +395,7 @@ function CSDashboard() {
                       justifyContent: "center",
                     }}
                   >
-                    <FlagIcon color="primary" />
+                    <FlagIcon color="inherit" />
                   </ListItemIcon>
                   <ListItemText
                     primary="Countries"
@@ -425,7 +425,7 @@ function CSDashboard() {
                       justifyContent: "center",
                     }}
                   >
-                    <ApartmentIcon color="primary" />
+                    <ApartmentIcon color="inherit" />
                   </ListItemIcon>
                   <ListItemText
                     primary="Cities"
