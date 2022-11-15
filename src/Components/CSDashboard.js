@@ -134,7 +134,7 @@ function CSDashboard() {
       {/* <Header /> */}
       <Box sx={{ display: "flex", flexGrow: 1 }}>
         {/* <CssBaseline /> */}
-        <AppBar
+        {/* <AppBar
           sx={{
             backgroundColor: "#222",
             padding: "5px",
@@ -158,9 +158,12 @@ function CSDashboard() {
             <Typography variant="h4" noWrap component="div">
              DashBoard
             </Typography>
-            <Box>
+    
+              <Toolbar>
               {auth && (
-                <div>
+                <div style={{display: "flex",
+                justifyContent: "space-between",
+                width: "100%",}}>
                   <IconButton 
                     size="large"
                     aria-label="account of current user"
@@ -203,7 +206,76 @@ function CSDashboard() {
                   </Menu>
                 </div>
               )}
-            </Box>
+              </Toolbar>
+        
+          </Toolbar>
+        </AppBar> */}
+        <AppBar
+          sx={{
+            backgroundColor: "#222",
+            padding: "5px",
+          }}
+          position="fixed"
+          open={open}
+        >
+          
+          <Toolbar>
+            {auth && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  width: "100%",
+                }}
+              >
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 2,
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon fontSize="large" />
+                </IconButton>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle fontSize="large" />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                    // style={{ color: "red", fontWeight: "bolder" }}
+                  >
+                    LOGOUT
+                  </MenuItem>
+                </Menu>
+              </div>
+            )}
           </Toolbar>
         </AppBar>
         <Box>

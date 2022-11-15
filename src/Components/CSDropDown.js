@@ -1,3 +1,4 @@
+import { FormControl } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -36,9 +37,10 @@ export default function CSDropDown(props) {
   }, []);
   return (
     <>
+    <FormControl style={{width:'100%'}}>
       <InputLabel id="demo-simple-select-label">{label}</InputLabel>
       <Select
-        variant="standard"
+        variant="outlined"
         fullWidth={true}
         value={value}
         labelId="demo-simple-select-label"
@@ -59,6 +61,7 @@ export default function CSDropDown(props) {
             ))
           : null}
       </Select>
+      </FormControl>
     </>
   );
 }

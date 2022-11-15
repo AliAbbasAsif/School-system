@@ -9,9 +9,9 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../App.css";
-import { getData } from "../Config/firebasemethods";
+import { getData, sendData } from "../Config/firebasemethods";
 import CSButton from "../Components/CSButton";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import CSTextField from "../Components/CSTextField";
 
 function QuizApp() {
   const [fullpageloader, setfullpageloader] = useState(false);
@@ -27,11 +27,13 @@ function QuizApp() {
   let location = useLocation();
   let navigate = useNavigate();
   let dt = location.state.item.e;
-  console.log(data);
-  console.log(minutes);
-  console.log(dt);
-  console.log(Questions);
-
+  const [model, setmodel] = useState({});
+  console.log(model);
+  let fillmodel = (key, val) => {
+    model[key] = val;
+    setmodel({ ...model });
+    console.log(model);
+  };
   let getquizdata = () => {
     setfullpageloader(true);
     getData("quizdata")
@@ -85,6 +87,22 @@ function QuizApp() {
     setstartQuiz(true);
     setloader(false);
   };
+
+  let update = () => {
+    fillmodel("Marks", score);
+    fillmodel("percentage",((score / Questions.length) * 100).toFixed(1));
+    fillmodel("Attemped Questions", score);
+    fillmodel("Wrong Questions", (Questions.length - score));
+    sendData(model, "QuizResults/")
+    .then((success) => {
+      console.log(success);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    navigate('/course')
+
+  };
   return fullpageloader ? (
     <>
       <CircularProgress sx={{ width: "70%" }} />
@@ -106,6 +124,7 @@ function QuizApp() {
           <Typography variant="h4" sx={{ margin: "10px", p: 1 }}>
             Report Card
           </Typography>
+          <Typography variant="h5">Name : {model.username}</Typography>
           <Typography variant="h5">Your Score : {score}</Typography>
           <Typography variant="h5">
             Percentage : {((score / Questions.length) * 100).toFixed(1)}%
@@ -119,7 +138,7 @@ function QuizApp() {
             color="success"
             variant={"contained"}
             fullwidth
-            onClick={() => navigate("/course")}
+            onClick={update}
           />
         </Box>
       ) : null}
@@ -138,6 +157,14 @@ function QuizApp() {
               >
                 <Typography variant="h4">{dt.coursename} Quiz</Typography>
               </Box>
+            </Grid>
+            <Grid item md={12}>
+              <CSTextField
+                label="UserName"
+                required={true}
+                value={model.firstname}
+                onChange={(e) => fillmodel("username", e.target.value)}
+              />
             </Grid>
             <Grid item md={12}>
               <Box sx={{ p: 2, mb: 3 }}>
@@ -200,7 +227,7 @@ function QuizApp() {
                             onClick={() => {
                               checkQuestion(
                                 x,
-                                Questions[indexnumber].correctoption
+                                Questions[indexnumber].correctOption
                               );
                             }}
                           />

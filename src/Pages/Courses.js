@@ -46,9 +46,9 @@ function Courses() {
     <div>
       <Navbar />
       <Box sx={{ p: 4.5 }}>
-        <Grid container spacing={3}>
+        <Grid container spacing={2}>
           {data.map((e) => (
-            <Grid item md={3}>
+            <Grid item md={3} sx={6}>
               <Card
                 onClick={() => teleport(e)}
                 sx={{

@@ -9,6 +9,7 @@ import RegistrationForm from "../Pages/RegistrationForm";
 import Results from "../Pages/Results";
 import SignUp from "../Pages/SignUp";
 import Trainer from "../Pages/Trainer";
+import Welcome from "../Pages/Welcome";
 
 function AppRouter() {
   return (
@@ -17,6 +18,7 @@ function AppRouter() {
         <Routes>
           {/* <Route path="/home:id" element={<Home />} /> */}
           <Route path="/" element={<RegistrationForm />} />
+          <Route path="welcome" element={<Welcome />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="admin/*" element={<Admin/>}/>
           <Route path="/admin" element={<Login/>}/>
